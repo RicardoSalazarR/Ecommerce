@@ -253,6 +253,11 @@ function createItemCart( item ) {
     btn2.innerText = `-`
     btn2.classList.add("add")
     
+    const trash = document.createElement("i")
+    trash.classList.add("bx")
+    trash.classList.add("bx-trash-alt")
+    trash.classList.add("red")
+
     contenedorImg.appendChild( img )
     contenedor.appendChild(contenedorImg)
     stockAndPrice.appendChild( stock )
@@ -270,7 +275,7 @@ function createItemCart( item ) {
     
 
     contenedor.appendChild(contenedorText)
-    
+    contenedor.appendChild(trash)
     contenedorgrl.appendChild(contenedor)
 
 }
