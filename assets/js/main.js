@@ -67,6 +67,7 @@ const closeCart = (menu)=>{
     menu.classList.add("hide")
 }
 
+
 const shopIcon = document.getElementById("cart-shop")
 
 const closeShopIcon = document.getElementById("close-cart")
@@ -115,7 +116,7 @@ function createItem( item ) {
     name.classList.add("product-name")
 
     const price = document.createElement("h4")
-    price.innerText = `$${item.price}`
+    price.innerText = `$${item.price}.00`
     price.classList.add("product-price")
 
     const stock = document.createElement("h4")
