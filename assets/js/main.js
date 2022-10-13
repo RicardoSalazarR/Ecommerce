@@ -206,10 +206,17 @@ function createItemCart( item ) {
     contenedor.classList.add("cart-item")
 
     const contenedorImg = document.createElement("div")
-    
+    contenedorImg.classList.add("cart-product-image")
+
     const contenedorText = document.createElement("div")
     contenedorText.classList.add("cart-item-description")
     contenedorText.id=`${item.id}`
+
+    const stockAndPrice = document.createElement("div")
+    stockAndPrice.classList.add("stock-and-price")
+
+    const btnsCantidad = document.createElement("div")
+    btnsCantidad.classList.add("btns-cantidad")
 
     const name = document.createElement("h3")
     name.innerText = `${item.name}`
@@ -218,14 +225,17 @@ function createItemCart( item ) {
     const price = document.createElement("h4")
     price.innerText = `$${item.price}`
     price.classList.add("cart-item-price")
+    price.classList.add("red")
 
     const subT = document.createElement("h4")
-    subT.innerText = `Subtotal:$${item.price*item.cantidad}`
+    subT.innerText = `Subtotal: $${item.price*item.cantidad}`
     subT.classList.add("cart-item-subTotal")
+    subT.classList.add("red")
 
     const stock = document.createElement("h4")
     stock.innerText = `Stock: ${item.quantity}`
     stock.classList.add("cart-item-stock")
+    
 
     const units = document.createElement("h4")
     units.innerText = `${item.cantidad} units`
@@ -239,17 +249,22 @@ function createItemCart( item ) {
     btn.innerText = `+`
     btn.classList.add("delete")
     const btn2 = document.createElement("button")
-    btn.innerText = `-`
-    btn.classList.add("add")
+    btn2.innerText = `-`
+    btn2.classList.add("add")
     
     contenedorImg.appendChild( img )
     contenedor.appendChild(contenedorImg)
+    stockAndPrice.appendChild( stock )
+    stockAndPrice.appendChild( price )
+    btnsCantidad.appendChild(btn)
+    btnsCantidad.appendChild( units)
+    btnsCantidad.appendChild(btn2)
 
     contenedorText.appendChild(name)
-    contenedorText.appendChild( stock )
-    contenedorText.appendChild( price )
+    contenedorText.appendChild(stockAndPrice)
     contenedorText.appendChild( subT)
-    contenedorText.appendChild( units)
+    contenedorText.appendChild(btnsCantidad)
+    
 
     
 
