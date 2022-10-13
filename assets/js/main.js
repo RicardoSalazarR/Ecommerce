@@ -26,6 +26,7 @@ const items = [
       quantity: 20
     }
   ]
+  const ArrayCart = []
 const loadcomponent = ()=>{
     const loader = document.getElementById("loader")
     setTimeout(()=>{
@@ -105,6 +106,7 @@ function createItem( item ) {
     const contenedorImg = document.createElement("div")
     const contenedorText = document.createElement("div")
     contenedorText.classList.add("product-description")
+    contenedorText.id=`${item.id}`
 
     const contenedorgrl = document.querySelector(".products")
 
@@ -140,6 +142,119 @@ function createItem( item ) {
     contenedor.appendChild(contenedorText)
     
     contenedorgrl.appendChild(contenedor)
+    cartFunctionality(btn)
+
 }
 
 items.forEach(item => createItem(item))
+let itemsCounter = 0
+let totalPrice = 0
+
+
+function cartFunctionality(button){
+   
+    button.addEventListener("click", e => {
+
+        const id = parseInt(e.target.parentElement.id)
+        const selectedProduct = items.find( item => item.id === id )
+        let index = ArrayCart.indexOf(selectedProduct)
+        if(index>=0){
+            if(ArrayCart[index].quantity<= ArrayCart[index].cantidad){
+                alert("no hay stock")
+            }else{
+                ArrayCart[index].cantidad++
+                itemsCounter += 1
+                totalPrice += selectedProduct.price 
+            }
+        }else{
+            selectedProduct.cantidad=1
+            ArrayCart.push(selectedProduct)
+            itemsCounter += 1
+                totalPrice += selectedProduct.price
+        }
+        //
+        Changetext(".cart-items", `${itemsCounter} items`)
+        Changetext(".cart-price",`$${totalPrice}.00`)
+        Changetext("#cart-counter",itemsCounter)
+
+        show(ArrayCart) 
+    })
+    
+       
+}
+function show(array){
+    const div = document.querySelector(".cart-content")
+    
+    while (div.firstChild) {
+        div.removeChild(div.firstChild);
+    }
+    array.forEach(item=>{
+
+        createItemCart(item,div)
+    })
+}
+
+function Changetext(old, newText){
+    const tag=document.querySelector(old)
+    tag.innerText=newText
+}
+
+
+function createItemCart( item ) {
+    const contenedorgrl = document.querySelector(".cart-content")
+    const contenedor = document.createElement("article")
+    contenedor.classList.add("cart-item")
+
+    const contenedorImg = document.createElement("div")
+    
+    const contenedorText = document.createElement("div")
+    contenedorText.classList.add("cart-item-description")
+    contenedorText.id=`${item.id}`
+
+    const name = document.createElement("h3")
+    name.innerText = `${item.name}`
+    name.classList.add("cart-item-name")
+
+    const price = document.createElement("h4")
+    price.innerText = `$${item.price}`
+    price.classList.add("cart-item-price")
+
+    const subT = document.createElement("h4")
+    subT.innerText = `Subtotal:$${item.price*item.cantidad}`
+    subT.classList.add("cart-item-subTotal")
+
+    const stock = document.createElement("h4")
+    stock.innerText = `Stock: ${item.quantity}`
+    stock.classList.add("cart-item-stock")
+
+    const units = document.createElement("h4")
+    units.innerText = `${item.cantidad} units`
+    units.classList.add("cart-item-units")
+
+    const img = document.createElement("img")
+    img.src = `${item.image}`
+    img.classList.add( "img-cart-item" )
+
+    const btn = document.createElement("button")
+    btn.innerText = `+`
+    btn.classList.add("delete")
+    const btn2 = document.createElement("button")
+    btn.innerText = `-`
+    btn.classList.add("add")
+    
+    contenedorImg.appendChild( img )
+    contenedor.appendChild(contenedorImg)
+
+    contenedorText.appendChild(name)
+    contenedorText.appendChild( stock )
+    contenedorText.appendChild( price )
+    contenedorText.appendChild( subT)
+    contenedorText.appendChild( units)
+
+    
+
+    contenedor.appendChild(contenedorText)
+    
+    contenedorgrl.appendChild(contenedor)
+
+}

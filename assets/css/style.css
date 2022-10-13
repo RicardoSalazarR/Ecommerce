@@ -9,7 +9,6 @@ body{
     background-color: var(--body-color)
 }
 :root {
-    /*========== Colors ==========*/
     --first-color: hsl(354, 78%, 60%);
     --button-color: hsl(0, 0%, 17%);
     --button-color-alt: hsl(0, 0%, 21%);
@@ -21,21 +20,10 @@ body{
     --container-color: #fff;
     --border-color: hsl(0, 0%, 94%);
   
-    /*========== Font and typography ==========*/
+
     --body-font: 'Roboto', sans-serif;
   }
-  /*========== Variables Dark theme ==========*/
-/*
-    --first-color: hsl(182, 53%, 74%);
-    --button-color: hsl(246, 16%, 12%);
-    --button-color-alt: hsl(0, 0%, 28%);
-    --card-color: hsla(246, 16%, 5%, .5);
-    --title-color: hsl(0, 0%, 95%);
-    --text-color: hsl(0, 0%, 75%);
-    --body-color: hsl(249, 19%, 14%);
-    --container-color: hsl(246, 16%, 12%);
-    --border-color: hsl(0, 0%, 20%);
-*/
+
 body.dark{
     --first-color: hsl(182, 53%, 74%);
     --button-color: hsl(246, 16%, 12%);
@@ -158,6 +146,45 @@ nav{
     top: 0;
     right: 0;
     box-shadow: -4px 5px 10px rgb(147 147 147);
+}
+.cart-content{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.cart-item{
+    display: flex;
+    flex-direction: row;
+}
+.img-cart-item{
+    width: 100px;
+}
+.cart-body{
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+
+    gap: 10vh;
+    text-align: center;
+    max-height: 95vh;
+}
+.cart-items{
+    position: relative;
+    left: 0;
+    grid-area: "items";
+}
+.cart-price{
+    grid-area: "price";
+}
+.checkout{
+    grid-area: "btn";
+}
+.cart-info{
+    display: grid;
+
+    grid-template-areas: 
+    "items price"
+    ". btn";
 }
 .menu{
     width: 100%;
@@ -314,12 +341,14 @@ footer{
 }
 .add-to-cart{
     position: absolute;
+    background-color: var(--body-color);
     width: 30px;
     height: 30px;
     border-radius: 50%;
     top: -20px;
     right: 0;
     border: none;
+    color: var(--title-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 @keyframes load{
