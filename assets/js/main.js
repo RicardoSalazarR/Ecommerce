@@ -31,7 +31,7 @@ const loadcomponent = ()=>{
     const loader = document.getElementById("loader")
     setTimeout(()=>{
         loader.classList.add("hide")
-    }, 1000)    
+    }, 3000)    
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -42,10 +42,6 @@ const themeIcon = document.getElementById( "theme-btn" )
 
 
 themeIcon.addEventListener( "click", () => {
-    //element.classList.toggle("clase")
-    //Si la clase NO existe, la agrega
-    //Si la clase YA existe, la quita
-
     document.body.classList.toggle("dark")
     if( themeIcon.classList.contains("bx-moon") ){
         themeIcon.classList.replace("bx-moon", "bx-sun")
