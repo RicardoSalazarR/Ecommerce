@@ -109,6 +109,10 @@ nav{
 }
 #menu{
    text-align: center;
+   background-color: var(--body-color);
+}
+.w{
+    color: var(--title-color);
 }
 #menu>ul{
     display: flex;
