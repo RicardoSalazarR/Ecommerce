@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--body-font);
+    
 }
 body{
     background-color: var(--body-color)
@@ -90,7 +91,7 @@ nav{
     flex-direction: row;
     justify-content: space-between;
     z-index: 1;
-    position: absolute;
+    position: fixed;
 }
 
 .icons-header{
@@ -439,7 +440,10 @@ ul{
 }
 .filter>p{
     font-size: 12px;
-} 
+}
+.change-Bg{
+    background-color: var(--body-color);
+}
 @media screen and (max-width: 640px) {
     .HH{
         display: none;
@@ -474,6 +478,11 @@ ul{
     .main-pictures{
         padding-top: 20%;
         margin-left: 8%;
+    }
+    .main-pictures>img{
+        position: relative;
+    top: -45px;
+    
     }
 
     .filters{

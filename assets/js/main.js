@@ -33,6 +33,17 @@ const loadcomponent = ()=>{
         loader.classList.add("hide")
     }, 3000)    
 }
+window.addEventListener('scroll',changeBgColor)
+ 
+function changeBgColor(){
+    const navBar = document.querySelector("nav")
+    if(window.scrollY >= 200){
+        navBar.classList.add("change-Bg")
+    }else{
+        navBar.classList.remove("change-Bg")
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded",()=>{
     loadcomponent()
